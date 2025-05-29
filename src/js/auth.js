@@ -66,6 +66,8 @@ async function loginUser(e) {
         password: passwordInput
     }
 
+    loginMessageDiv.innerHTML = "<p>Loggar in... vänligen vänta</p>";
+
     try {
         const response = await fetch("https://dt207g-project-restapi.onrender.com/api/users/login", {
             method: "POST",
@@ -129,6 +131,8 @@ async function registerUser(e) {
         email: emailInput,
         password: passwordInput
     }
+
+    registerMessageDiv.innerHTML = "<p>Registrerar konto... vänligen vänta</p>";
 
     try {
         const response = await fetch("https://dt207g-project-restapi.onrender.com/api/users/register", {
