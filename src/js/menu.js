@@ -79,7 +79,7 @@ function renderData(data) {
             const button = document.createElement('button');
             button.textContent = 'RADERA';
             button.classList.add('deleteBtn');
-            button.addEventListener('click', () => deleteItem(menuItem));
+            button.addEventListener('click', () => deleteMenuItem(menuItem));
             row.appendChild(button);
 
             section.appendChild(row);
@@ -98,4 +98,30 @@ function getCart() {
 //Funktion för att spara cart i localStorage
 function saveCart(cart) {
     localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+//Funktion som raderar menyobjekt och skriver ut uppdaterad data. 
+async function deleteMenuItem(menuItem) {
+
+    const errorMessageEl = document.getElementById('errorMessage');
+
+    const confirmDelete = confirm(`Är du säker på att du vill radera "${menuItem.name}"?`);
+    if (!confirmDelete) return;
+
+    try {
+        const response = await fetch(`https://dt207g-project-restapi.onrender.com/api/menu/${menuItem._id}`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("user_token")}`
+            }
+        });
+
+        if (!response.ok) throw new Error("Kunde inte radera posten");
+
+        getData();
+    } catch (error) {
+        console.error("Fel vid radering:", error);
+        //Skriver ut felmeddelande till användaren.
+        errorMessageEl.textContent = "Kunde inte radera maträtt. Ladda om sidan och prova igen";
+    }
 }
