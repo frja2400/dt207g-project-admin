@@ -1,8 +1,5 @@
 "use strict"
 
-import { requireAuth } from "./utils.js";
-requireAuth();
-
 const loginForm = document.getElementById("loginForm");
 const registerForm = document.getElementById("registerForm");
 
@@ -20,6 +17,17 @@ function init() {
     }
 }
 
+//Funktion för att validera mail.
+function isValidEmail(email) {
+    const emailRegex = /^\S+@\S+\.\S+$/;
+    return emailRegex.test(email);
+}
+
+//Rensar formulär
+function clearForm(form) {
+    form.reset();
+}
+
 //Logga in användare
 async function loginUser(e) {
     e.preventDefault();
@@ -34,8 +42,8 @@ async function loginUser(e) {
     const errors = [];
 
     //Validering för inmatning
-    if (!emailInput.trim()) {
-        errors.push("Du måste fylla i en giltig företagsmail.");
+    if (!emailInput.trim() || !isValidEmail(emailInput)) {
+        errors.push("Du måste fylla i en giltig emailadress.");
     } 
 
     if (!passwordInput) {
@@ -71,8 +79,9 @@ async function loginUser(e) {
 
         if (response.ok) {
             //Spara min token i localStorage(min server skickar tillbaka svaret i "response" i JSON)
-            localStorage.setItem("user_token", data.response.token);
-            window.location.href = "dashboard.html";
+            localStorage.setItem("user_token", data.token);
+            clearForm(loginForm);
+            window.location.href = "/dashboard.html";
         } else {
             //Om något går fel med inloggningen, visa ett generellt felmeddelande
             displayError("Felaktig email eller lösenord.", loginMessageDiv);
@@ -97,8 +106,8 @@ async function registerUser(e) {
     const errors = [];
 
     //Validering för inmatning
-    if (!emailInput.trim()) {
-        errors.push("Du måste fylla i en giltig företagsmail.");
+    if (!emailInput.trim() || !isValidEmail(emailInput)) {
+        errors.push("Du måste fylla i en giltig emailadress.");
     } 
 
     if (!passwordInput) {
@@ -133,7 +142,8 @@ async function registerUser(e) {
         const data = await response.json();
 
         if (response.ok) {
-            registerMessageDiv.innerHTML = "<p class='success'>Administrationskonto registrerad! <a href='login.html'>Logga in här</a></p>";
+            registerMessageDiv.innerHTML = "<p class='success'>Administrationskonto registrerad! <a href='index.html'>Logga in här</a></p>";
+            clearForm(registerForm);
         } else {
             //Om något går fel med registrering, visa ett generellt felmeddelande
             displayError("Det gick inte att registrera administrationskontot.", registerMessageDiv);
@@ -153,12 +163,3 @@ function displayError(error, container) {
     container.appendChild(errorMessage);
 }
 
-//Logga ut genom att ta bort token
-    const logoutLink = document.getElementById("logoutLink");
-
-    if (logoutLink) {
-        logoutLink.addEventListener("click", () => {
-            localStorage.removeItem("user_token");
-            window.location.href = "index.html";
-        })
-    }

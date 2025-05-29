@@ -5,9 +5,9 @@
   "license": "ISC",
   "description": "En boilerplate för webbutveckling med HTML, CSS, JS och Parcel",
   "browserslist": "> 0.5%, last 2 versions, not dead",
-  "source": "src/index.html",
+  "source": "index.html",
   "scripts": {
-    "start": "parcel --no-hmr --open",
+    "start": "parcel index.html dashboard.html menu.html orders.html register.html --no-hmr --open",
     "build": "parcel build"
   },
   "devDependencies": {
