@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzeria Berna</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <script src="js/order.js" type="module"></script>
+</head>
+
+<body>
+    <main>
+        <h1>Din beställning</h1>
+        <div id="orderList"></div>
+        <div id="message"></div>
+        <form id="orderForm" novalidate>
+            <label for="name">Namn*:</label><br>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="number">Telefon-nummer*:</label><br>
+            <input type="text" id="number" name="number" required><br>
+
+            <label for="street">Gata*:</label><br>
+            <input type="text" id="street" name="street" required><br>
+
+            <label for="postalcode">Postnummer*:</label><br>
+            <input type="text" id="postalcode" name="postalcode" required><br>
+
+            <label for="city">Stad*:</label><br>
+            <input type="text" id="city" name="city" required><br>
+
+            <p>Välj betalningsalternativ*:</p>
+            <label>
+                <input type="radio" name="payment" value="swish" checked required>
+                Swish
+            </label><br>
+            <label>
+                <input type="radio" name="payment" value="kort" required>
+                Kort vid leverans
+            </label><br>
+            <label>
+                <input type="radio" name="payment" value="faktura" required>
+                Faktura
+            </label><br>
+
+            <p><i>* = Obligatoriska fält.</i></p>
+
+            <div class="btnContainer"><button type="submit">SLUTFÖR BESTÄLLNING</button></div>
+        </form>
+    </main>
+</body>
+
+</html>
