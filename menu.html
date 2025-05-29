@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="sv">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <script src="src/js/menu.js" type="module"></script>
     <title>CMS | Pizzeria Berna</title>
 </head>
+
 <body>
     <main>
         <h2>Meny</h2>
@@ -18,7 +20,39 @@
         </nav>
         <div id="errorMessage"></div>
         <div id="menuContainer"></div>
+        <h2>Lägg till ny maträtt</h2>
+        <div id="message"></div>
+        <form id="menuItemForm" novalidate>
+            <label for="name">Namn*:</label><br>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="category">Kategori*:</label><br>
+            <select id="category" required>
+                <option value="" disabled selected>Välj</option>
+                <option value="Pizza">Pizza</option>
+                <option value="Pasta">Pasta</option>
+                <option value="Dryck">Dryck</option>
+            </select><br>
+
+            <label for="price">Pris*:</label><br>
+            <input type="number" id="price" name="price" required><br>
+
+            <label for="description">Beskrivning:</label><br>
+            <input type="text" id="description" name="description"><br>
+
+            <label for="vegan">Är maträtten vegansk?*:</label><br>
+            <select id="vegan" required>
+                <option value="" disabled selected>Välj</option>
+                <option value="Ja">Ja</option>
+                <option value="Nej">Nej</option>
+            </select><br><br>
+
+            <p><i>* = Obligatoriska fält.</i></p>
+
+            <div class="btnContainer"><button type="submit">LÄGG TILL</button></div>
+        </form>
         <a href="dashboard.html">Tillbaka till dashboard</a>
     </main>
 </body>
+
 </html>

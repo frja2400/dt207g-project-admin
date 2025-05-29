@@ -5,6 +5,11 @@ if (!localStorage.getItem("user_token")) {
     window.location.href = "/index.html";
 }
 
+const form = document.getElementById("menuItemForm");
+const messageEl = document.getElementById("message");
+const errorMessageEl = document.getElementById("errorMessage");
+const menuEl = document.getElementById("menuContainer");
+
 document.addEventListener('DOMContentLoaded', () => {
     getData();
 });
@@ -18,10 +23,17 @@ function showLoadingMessage() {
 //Asynkron funktion som hämtar menydata från mitt API.
 async function getData() {
     showLoadingMessage();
-    try {
-        const response = await fetch("https://dt207g-project-restapi.onrender.com/api/menu");
-        if (!response.ok) throw new Error("Nätverksfel");
 
+    const headers = {};
+    const token = localStorage.getItem("user_token");
+    if (token) {
+        headers["Authorization"] = `Bearer ${token}`;
+    }
+    try {
+        const response = await fetch("https://dt207g-project-restapi.onrender.com/api/menu", {
+            headers
+        });
+        if (!response.ok) throw new Error("Nätverksfel");
         const data = await response.json();
         console.table(data);
         renderData(data);
@@ -34,7 +46,6 @@ async function getData() {
 
 //Skriv ut menydata på skärmen
 function renderData(data) {
-    const menuEl = document.getElementById("menuContainer");
     menuEl.innerHTML = '';
 
     //Skapa kategoribehållare
@@ -103,8 +114,6 @@ function saveCart(cart) {
 //Funktion som raderar menyobjekt och skriver ut uppdaterad data. 
 async function deleteMenuItem(menuItem) {
 
-    const errorMessageEl = document.getElementById('errorMessage');
-
     const confirmDelete = confirm(`Är du säker på att du vill radera "${menuItem.name}"?`);
     if (!confirmDelete) return;
 
@@ -125,3 +134,55 @@ async function deleteMenuItem(menuItem) {
         errorMessageEl.textContent = "Kunde inte radera maträtt. Ladda om sidan och prova igen";
     }
 }
+
+//Händelselyssnare på formulär för att addera nytt menyobjekt.
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    //Samla formulärdata
+    const name = document.getElementById("name").value.trim();
+    const category = document.getElementById("category").value;
+    const price = document.getElementById("price").value.trim();
+    const description = document.getElementById("description").value.trim();
+    const veganValue = document.getElementById("vegan").value;
+
+    //Konvertera "Ja"/"Nej" till boolean
+    const isVegan = veganValue === "Ja";
+
+    //Kontrollera obligatoriska fält
+    if (!name || !category || !price || veganValue === "") {
+        messageEl.textContent = "Alla obligatoriska fält måste fyllas i.";
+        messageEl.className = "error-message";
+        return;
+    }
+
+    const newMenuItem = {
+        name,
+        category,
+        price: Number(price),
+        description,
+        isVegan
+    };
+
+    try {
+        const response = await fetch("https://dt207g-project-restapi.onrender.com/api/menu", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("user_token")}`
+            },
+            body: JSON.stringify(newMenuItem)
+        });
+
+        if (!response.ok) throw new Error("Fel vid sparande.");
+
+        form.reset();
+        messageEl.textContent = "";
+        messageEl.className = "";
+        getData();
+    } catch (error) {
+        console.error("Fel vid POST:", error);
+        messageEl.textContent = "Kunde inte spara maträtten. Ladda om sidan och prova igen.";
+        messageEl.className = "error-message";
+    }
+});
