@@ -108,16 +108,6 @@ function renderData(data) {
     }
 }
 
-//Funktion för att läsa cart från localStorage
-function getCart() {
-    return JSON.parse(localStorage.getItem('cart')) || [];
-}
-
-//Funktion för att spara cart i localStorage
-function saveCart(cart) {
-    localStorage.setItem('cart', JSON.stringify(cart));
-}
-
 //Funktion som raderar menyobjekt och skriver ut uppdaterad data. 
 async function deleteMenuItem(menuItem) {
 
