@@ -93,6 +93,13 @@ function renderData(data) {
             button.addEventListener('click', () => deleteMenuItem(menuItem));
             row.appendChild(button);
 
+            //Ändra-knapp
+            const editButton = document.createElement('button');
+            editButton.textContent = 'ÄNDRA';
+            editButton.classList.add('editBtn');
+            editButton.addEventListener('click', () => populateFormForEdit(menuItem));
+            row.appendChild(editButton);
+
             section.appendChild(row);
         });
 
@@ -164,9 +171,16 @@ form.addEventListener("submit", async (e) => {
         isVegan
     };
 
+    //Bestämmer om det är PUT eller POST med en ternär operator.
+    const url = currentEditId
+        ? `https://dt207g-project-restapi.onrender.com/api/menu/${currentEditId}`
+        : "https://dt207g-project-restapi.onrender.com/api/menu";
+
+    const method = currentEditId ? "PUT" : "POST";
+
     try {
-        const response = await fetch("https://dt207g-project-restapi.onrender.com/api/menu", {
-            method: "POST",
+        const response = await fetch(url, {
+            method,
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${localStorage.getItem("user_token")}`
@@ -179,6 +193,9 @@ form.addEventListener("submit", async (e) => {
         form.reset();
         messageEl.textContent = "";
         messageEl.className = "";
+
+        currentEditId = null;
+
         getData();
     } catch (error) {
         console.error("Fel vid POST:", error);
@@ -186,3 +203,19 @@ form.addEventListener("submit", async (e) => {
         messageEl.className = "error-message";
     }
 });
+
+
+//Funktioner för att ändra menyobjekt
+let currentEditId = null;
+
+function populateFormForEdit(menuItem) {
+    document.getElementById("name").value = menuItem.name;
+    document.getElementById("category").value = menuItem.category;
+    document.getElementById("price").value = menuItem.price;
+    document.getElementById("description").value = menuItem.description;
+    document.getElementById("vegan").value = menuItem.isVegan ? "Ja" : "Nej";
+
+    currentEditId = menuItem._id;
+
+    messageEl.textContent = `Du redigerar: "${menuItem.name}"`;
+}
