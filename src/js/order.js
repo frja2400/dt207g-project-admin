@@ -7,6 +7,7 @@ if (!localStorage.getItem("user_token")) {
 
 //Hämta element
 const orderEl = document.getElementById("orderContainer");
+const errorMessageEl = document.getElementById("errorMessage");
 
 document.addEventListener('DOMContentLoaded', () => {
     getData();
@@ -75,21 +76,103 @@ function renderData(orders) {
             <ul>${itemsHTML}</ul>
         `;
 
-        //RADERA-knapp
+        // RADERA-knapp
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = 'RADERA';
         deleteBtn.classList.add('deleteBtn');
         deleteBtn.addEventListener('click', () => deleteOrder(order._id));
         orderDiv.appendChild(deleteBtn);
 
-        //ÄNDRA-knapp
+        // ÄNDRA-knapp
         const editBtn = document.createElement('button');
         editBtn.textContent = 'ÄNDRA';
         editBtn.classList.add('editBtn');
-        editBtn.addEventListener('click', () => updateOrder(order));
+        editBtn.addEventListener('click', () => showEditForm(order, orderDiv));
         orderDiv.appendChild(editBtn);
 
         orderEl.appendChild(orderDiv);
+    });
+}
+
+//Funktion som visar formulär för att ändra beställningen
+function showEditForm(order, orderDiv) {
+    orderDiv.innerHTML = `
+        <form class="editOrderForm">
+            <label>
+                Kundnamn:<br>
+                <input type="text" name="customerName" value="${order.customerName}" required>
+            </label><br>
+            <label>
+                Telefon:<br>
+                <input type="text" name="phoneNumber" value="${order.phoneNumber}" required>
+            </label><br>
+            <label>
+                Gata:<br>
+                <input type="text" name="street" value="${order.address.street}" required>
+            </label><br>
+            <label>
+                Postnummer:<br>
+                <input type="text" name="postalCode" value="${order.address.postalCode}" required>
+            </label><br>
+            <label>
+                Stad:<br>
+                <input type="text" name="city" value="${order.address.city}" required>
+            </label><br>
+            <label>
+                Status:<br>
+                <select name="status" required>
+                    <option value="Mottagen" ${order.status === "Mottagen" ? "selected" : ""}>Mottagen</option>
+                    <option value="Behandlas" ${order.status === "Behandlas" ? "selected" : ""}>Behandlas</option>
+                    <option value="Skickad" ${order.status === "Skickad" ? "selected" : ""}>Levererad</option>
+                </select>
+            </label><br><br>
+            <button type="submit">Spara</button>
+            <button type="button" class="cancelBtn">Avbryt</button>
+        </form>
+    `;
+
+    //Hämta div som innehåller formulär och knappar
+    const form = orderDiv.querySelector('form');
+    const cancelBtn = orderDiv.querySelector('.cancelBtn');
+
+    //Avbryt-knapp som visar originaldata.
+    cancelBtn.addEventListener('click', () => getData());
+
+    //Hantera formulärsubmit
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const updatedOrder = {
+            customerName: form.customerName.value.trim(),
+            phoneNumber: form.phoneNumber.value.trim(),
+            address: {
+                street: form.street.value.trim(),
+                postalCode: form.postalCode.value.trim(),
+                city: form.city.value.trim(),
+            },
+            status: form.status.value
+        };
+
+        try {
+            const response = await fetch(`https://dt207g-project-restapi.onrender.com/api/order/${order._id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem("user_token")}`
+                },
+                body: JSON.stringify(updatedOrder)
+            });
+
+            if (!response.ok) throw new Error('Kunde inte uppdatera beställningen');
+
+            //Ladda om alla beställningar för att visa uppdaterad data
+            getData();
+
+        } catch (error) {
+            console.error("Fel vid uppdatering:", error);
+            //Skriver ut felmeddelande till användaren.
+            errorMessageEl.textContent = "Kunde inte uppdatera beställningen. Ladda om sidan och prova igen";
+        }
     });
 }
 
