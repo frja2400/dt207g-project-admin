@@ -92,3 +92,27 @@ function renderData(orders) {
         orderEl.appendChild(orderDiv);
     });
 }
+
+//Funktion som raderar beställningar och skriver ut uppdaterad data. 
+async function deleteOrder(orderId) {
+
+    const confirmDelete = confirm(`Är du säker på att du vill radera beställningen?`);
+    if (!confirmDelete) return;
+
+    try {
+        const response = await fetch(`https://dt207g-project-restapi.onrender.com/api/order/${orderId}`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("user_token")}`
+            }
+        });
+
+        if (!response.ok) throw new Error("Kunde inte radera posten");
+
+        getData();
+    } catch (error) {
+        console.error("Fel vid radering:", error);
+        //Skriver ut felmeddelande till användaren.
+        errorMessageEl.textContent = "Kunde inte radera beställningen. Ladda om sidan och prova igen";
+    }
+}
