@@ -18,8 +18,6 @@
                 <li><a href="orders.html">Beställningar</a></li>
             </ul>
         </nav>
-        <div id="errorMessage"></div>
-        <div id="menuContainer"></div>
         <h2>Lägg till ny maträtt</h2>
         <div id="message"></div>
         <form id="menuItemForm" novalidate>
@@ -50,7 +48,10 @@
             <p><i>* = Obligatoriska fält.</i></p>
 
             <div class="btnContainer"><button type="submit">LÄGG TILL</button></div>
+            <button type="button" id="cancelBtn">AVBRYT</button>
         </form>
+        <div id="errorMessage"></div>
+        <div id="menuContainer"></div>
         <a href="dashboard.html">Tillbaka till dashboard</a>
     </main>
 </body>

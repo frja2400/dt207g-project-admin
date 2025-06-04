@@ -9,6 +9,7 @@ const form = document.getElementById("menuItemForm");
 const messageEl = document.getElementById("message");
 const errorMessageEl = document.getElementById("errorMessage");
 const menuEl = document.getElementById("menuContainer");
+const cancelBtn = document.getElementById("cancelBtn");
 
 document.addEventListener('DOMContentLoaded', () => {
     getData();
@@ -208,4 +209,16 @@ function populateFormForEdit(menuItem) {
     currentEditId = menuItem._id;
 
     messageEl.textContent = `Du redigerar: "${menuItem.name}"`;
+
+    //Scrolla automatiskt högst upp.
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+
+//Funktion som avbryter ändring eller skapande av menyobjekt.
+cancelBtn.addEventListener("click", () => {
+    form.reset();
+    currentEditId = null;
+    messageEl.textContent = "";
+
+});
