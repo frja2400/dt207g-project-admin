@@ -13,9 +13,9 @@
         <div id="loginMessage"></div>
         <form id="loginForm" novalidate>
             <label for="email">Email:</label><br>
-            <input type="text" id="email" required><br>
+            <input type="email" id="email" required><br>
             <label for="password">Lösenord:</label><br>
-            <input type="password" id="password" required><br>
+            <input type="password" id="password" minlength="7" maxlength="50" required><br>
             <div class="btnContainer"><button type="submit">LOGGA IN</button></div>
             <p>Har du inget administrationskonto? <a href="register.html">Registrera dig här</a> med din företagsmail.</p>
         </form>

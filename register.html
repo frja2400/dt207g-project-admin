@@ -13,9 +13,9 @@
         <div id="registerMessage"></div>
         <form id="registerForm" novalidate>
             <label for="email">Företagsmail:</label><br>
-            <input type="text" id="email" required><br>
+            <input type="email" id="email" required><br>
             <label for="password">Lösenord:</label><br>
-            <input type="password" id="password" required><br>
+            <input type="password" id="password" minlength="7" maxlength="50" required><br>
             <small>Lösenordet måste vara minst 7 tecken.</small><br>
             <div class="btnContainer"><button type="submit">SKAPA KONTO</button></div>
         </form>

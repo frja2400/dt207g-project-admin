@@ -100,23 +100,23 @@ function showEditForm(order, orderDiv) {
         <form class="editOrderForm">
             <label>
                 Kundnamn:<br>
-                <input type="text" name="customerName" value="${order.customerName}" required>
+                <input type="text" name="customerName" value="${order.customerName}" maxlength="50" required>
             </label><br>
             <label>
                 Telefon:<br>
-                <input type="text" name="phoneNumber" value="${order.phoneNumber}" required>
+                <input type="text" name="phoneNumber" value="${order.phoneNumber}" maxlength="15" pattern="^[0-9+\-\s]{7,15}$" required>
             </label><br>
             <label>
                 Gata:<br>
-                <input type="text" name="street" value="${order.address.street}" required>
+                <input type="text" name="street" value="${order.address.street}" maxlength="50" required>
             </label><br>
             <label>
                 Postnummer:<br>
-                <input type="text" name="postalCode" value="${order.address.postalCode}" required>
+                <input type="text" name="postalCode" value="${order.address.postalCode}" maxlength="5" pattern="^[0-9]{5}$" required>
             </label><br>
             <label>
                 Stad:<br>
-                <input type="text" name="city" value="${order.address.city}" required>
+                <input type="text" name="city" value="${order.address.city}" maxlength="50" required>
             </label><br>
             <label>
                 Status:<br>
