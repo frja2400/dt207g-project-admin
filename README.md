@@ -1,11 +1,11 @@
 # CMS för Pizzeria Berna
 
 Det här projektet är admin-delen för min fiktiva restaurang Pizzeria Berna. Den är till för de anställda att logga in på för att kunna hantera menyn och beställningar. De skapar ett konto med deras arbetsmail. Det finns fem undersidor: 
-- Startsidan som är logga in-sidan.
-- En registreringssida om du inte har ett konto.
-- En dashboard med länkar till menyn eller beställningar. 
-- En för menyn. 
-- En för beställningar.
+- Startsidan där administratör loggar in.
+- Registreringssida där du registrerar ett konto med email och lösenord.
+- Dashboard med översikt och länkar till menyn och beställningar.
+- Menyn samt formulär för menyhantering.
+- Beställningar och knappar för hantering av beställningar.
 
 ## Funktioner
 
