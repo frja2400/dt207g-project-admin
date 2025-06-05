@@ -85,7 +85,8 @@ async function loginUser(e) {
             clearForm(loginForm);
             window.location.href = "/dashboard.html";
         } else {
-            //Om något går fel med inloggningen, visa ett generellt felmeddelande
+            //Om något går fel med inloggningen, visa ett generellt felmeddelande och rensa annan text.
+            loginMessageDiv.innerHTML = "";
             displayError("Felaktig email eller lösenord.", loginMessageDiv);
         }
     } catch (error) {
@@ -146,11 +147,11 @@ async function registerUser(e) {
         const data = await response.json();
 
         if (response.ok) {
-            registerMessageDiv.innerHTML = "<p class='success'>Administrationskonto registrerad! <a href='index.html'>Logga in här</a></p>";
+            registerMessageDiv.innerHTML = "<p class='success'>Administratörskonto registrerad! <a href='index.html'>Logga in här</a></p>";
             clearForm(registerForm);
         } else {
             //Om något går fel med registrering, visa ett generellt felmeddelande
-            displayError("Det gick inte att registrera administrationskontot.", registerMessageDiv);
+            displayError("Det gick inte att registrera administratörskontot.", registerMessageDiv);
         }
     } catch (error) {
         console.log("Fel vid registrering", error);
