@@ -47,6 +47,10 @@ h1 {
     text-align: center;
 }
 
+h2 {
+    margin-bottom: 30px;
+}
+
 .menuHeader {
     width: 100%;
     margin: 20px 0 0 0;
@@ -90,6 +94,10 @@ button:hover {
     background-color: #800000;
 }
 
+#logoutButton {
+    margin-top: 40px;
+}
+
 #loginMessage,
 #registerMessage,
 #errorMessage,
@@ -103,20 +111,21 @@ button:hover {
     line-height: 1;
 }
 
-nav {
+.navMenu {
     width: 100%;
 }
 
-nav ul {
+.navMenu ul {
     display: flex;
     gap: 20px;
     justify-content: center;
     padding: 0;
     list-style: none;
     margin-top: 0;
+    margin-bottom: 0;
 }
 
-li {
+.navMenu li {
     background-color: #e2cbab;
     padding: 20px;
     border-radius: 12px;
@@ -125,12 +134,12 @@ li {
     flex: 1;
 }
 
-li:hover {
+.navMenu li:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
-li a {
+.navMenu li a {
     text-decoration: none;
     color: black;
     font-weight: bold;
@@ -139,30 +148,35 @@ li a {
     letter-spacing: 1px;
 }
 
+#menuContainer,
+#orderContainer {
+    margin-bottom: 20px;
+}
+
 .menuSection {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    padding: 10px;
 }
 
-.menuSection .menuTitle,
 .menuTitle {
     width: 100%;
     color: #8b0000;
     font-size: 1.8em;
-    margin-bottom: 20px;
     text-align: left;
     border-bottom: 2px solid #b22222;
     padding-bottom: 5px;
+    font-size: 1.8em;
+    margin-bottom: 0;
+    margin-top: 25px;
 }
 
-.menuTitle {
-    font-size: 1.8em;
+#menuContainer .menuSection:first-child .menuTitle {
+    margin-top: 0px;
 }
 
 .menuItem {
-    flex: 1 1 calc(50% - 20px);
+    width: calc(50% - 10px);
     background-color: #f9f9f9;
     border-radius: 10px;
     padding: 15px;

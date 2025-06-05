@@ -96,7 +96,7 @@ function renderData(data) {
 
             //Ändra-knapp
             const editButton = document.createElement('button');
-            editButton.textContent = 'ÄNDRA';
+            editButton.textContent = 'UPPDATERA';
             editButton.classList.add('editBtn');
             editButton.addEventListener('click', () => populateFormForEdit(menuItem));
             row.appendChild(editButton);

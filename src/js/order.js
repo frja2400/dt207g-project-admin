@@ -54,7 +54,7 @@ function renderData(orders) {
 
     orders.forEach(order => {
         const orderDiv = document.createElement('div');
-        orderDiv.classList.add('order');
+        orderDiv.classList.add('menuItem');
 
         //Formatera datum
         const date = new Date(order.createdAt).toLocaleString('sv-SE');
@@ -76,16 +76,16 @@ function renderData(orders) {
             <ul>${itemsHTML}</ul>
         `;
 
-        // RADERA-knapp
+        //Radera-knapp
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = 'RADERA';
         deleteBtn.classList.add('deleteBtn');
         deleteBtn.addEventListener('click', () => deleteOrder(order._id));
         orderDiv.appendChild(deleteBtn);
 
-        // ÄNDRA-knapp
+        //Uppdatera-knapp
         const editBtn = document.createElement('button');
-        editBtn.textContent = 'ÄNDRA';
+        editBtn.textContent = 'UPPDATERA';
         editBtn.classList.add('editBtn');
         editBtn.addEventListener('click', () => showEditForm(order, orderDiv));
         orderDiv.appendChild(editBtn);
