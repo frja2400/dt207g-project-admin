@@ -91,7 +91,9 @@ button:hover {
 }
 
 #loginMessage,
-#registerMessage {
+#registerMessage,
+#errorMessage,
+#message {
     font-weight: bold;
     margin-bottom: 10px;
 }
@@ -116,7 +118,7 @@ nav ul {
 
 li {
     background-color: #e2cbab;
-    padding: 15px 25px;
+    padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -171,4 +173,13 @@ li a {
 
 .menuItem button {
     margin-right: 10px;
+}
+
+#cancelBtn {
+    display: none;
+}
+
+#errorMessage,
+#menuContainer {
+    flex-basis: 100%;
 }

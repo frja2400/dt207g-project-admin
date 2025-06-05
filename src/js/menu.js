@@ -150,7 +150,6 @@ form.addEventListener("submit", async (e) => {
     //Kontrollera obligatoriska fält
     if (!name || !category || !price || veganValue === "") {
         messageEl.textContent = "Alla obligatoriska fält måste fyllas i.";
-        messageEl.className = "error-message";
         return;
     }
 
@@ -186,6 +185,7 @@ form.addEventListener("submit", async (e) => {
         messageEl.className = "";
 
         currentEditId = null;
+        cancelBtn.style.display = "none";
 
         getData();
     } catch (error) {
@@ -208,6 +208,8 @@ function populateFormForEdit(menuItem) {
 
     currentEditId = menuItem._id;
 
+    cancelBtn.style.display = "inline-block";
+
     messageEl.textContent = `Du redigerar: "${menuItem.name}"`;
 
     //Scrolla automatiskt högst upp.
@@ -215,10 +217,10 @@ function populateFormForEdit(menuItem) {
 }
 
 
-//Funktion som avbryter ändring eller skapande av menyobjekt.
+//Funktion som avbryter ändring av menyobjekt.
 cancelBtn.addEventListener("click", () => {
     form.reset();
     currentEditId = null;
     messageEl.textContent = "";
-
+    cancelBtn.style.display = "none";
 });
