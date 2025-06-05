@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="sv">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,17 +8,21 @@
     <script src="src/js/dashboard.js" type="module"></script>
     <title>CMS | Pizzeria Berna</title>
 </head>
+
 <body>
     <main>
-        <h2>Välkommen till din Dashboard!</h2>
-        <p>Vad vill du ändra?</p>
-        <nav>
-            <ul>
-                <li><a href="menu.html">Meny</a></li>
-                <li><a href="orders.html">Beställningar</a></li>
-            </ul>
-        </nav>
-        <button id="logoutButton">Logga ut</button>
+        <div class="dashboardContainer">
+            <h1>Välkommen till din Dashboard</h1>
+            <h2>Vad vill du hantera?</h2>
+            <nav>
+                <ul>
+                    <li><a href="menu.html">Meny</a></li>
+                    <li><a href="orders.html">Beställningar</a></li>
+                </ul>
+            </nav>
+            <div class="btnContainer"><button id="logoutButton">LOGGA UT</button></div>
+        </div>
     </main>
 </body>
+
 </html>

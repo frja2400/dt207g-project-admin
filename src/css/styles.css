@@ -10,7 +10,8 @@ body {
     background-color: #f2f2f2;
 }
 
-.loginContainer {
+.loginContainer,
+.dashboardContainer {
     flex: 1;
     width: 500px;
     padding: 40px;
@@ -23,8 +24,12 @@ body {
     margin-top: 150px;
 }
 
-.loginContainer h1 {
-    color: #b22222;
+h1 {
+    background: linear-gradient(to right, #b22222, #8b0000);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     margin-top: 0;
 }
 
@@ -74,4 +79,39 @@ button:hover {
 #loginMessage p,
 #registerMessage p {
     line-height: 1.0em;
+}
+
+nav ul {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding: 0;
+    list-style: none;
+}
+
+li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    letter-spacing: 0.1em;
+}
+
+li {
+    background-color: #e2cbab;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    flex: 1;
+}
+
+li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+nav {
+    width: 100%;
 }
