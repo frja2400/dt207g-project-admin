@@ -11,48 +11,48 @@
 
 <body>
     <main>
-        <h2>Meny</h2>
+        <h1 class="menuHeader">Menyöversikt</h1>
         <nav>
             <ul>
-                <li><a href="menu.html">Meny</a></li>
+                <li><a href="dashboard.html">Till Dashboard</a></li>
                 <li><a href="orders.html">Beställningar</a></li>
             </ul>
         </nav>
-        <h2>Lägg till ny maträtt</h2>
-        <div id="message"></div>
-        <form id="menuItemForm" novalidate>
-            <label for="name">Namn*:</label><br>
-            <input type="text" id="name" name="name" maxlength="50" required><br>
+        <div class="menuItemContainer">
+            <h2>Lägg till ny maträtt</h2>
+            <div id="message"></div>
+            <form id="menuItemForm" novalidate>
+                <label for="name">Namn*:</label>
+                <input type="text" id="name" name="name" maxlength="50" required>
 
-            <label for="category">Kategori*:</label><br>
-            <select id="category" required>
-                <option value="" disabled selected>Välj</option>
-                <option value="Pizza">Pizza</option>
-                <option value="Pasta">Pasta</option>
-                <option value="Dryck">Dryck</option>
-            </select><br>
+                <label for="category">Kategori*:</label>
+                <select id="category" required>
+                    <option value="" disabled selected>Välj</option>
+                    <option value="Pizza">Pizza</option>
+                    <option value="Pasta">Pasta</option>
+                    <option value="Dryck">Dryck</option>
+                </select>
 
-            <label for="price">Pris*:</label><br>
-            <input type="number" id="price" name="price" required><br>
+                <label for="price">Pris*:</label>
+                <input type="number" id="price" name="price" required>
 
-            <label for="description">Beskrivning:</label><br>
-            <input type="text" id="description" name="description"><br>
+                <label for="description">Beskrivning:</label>
+                <input type="text" id="description" name="description">
 
-            <label for="vegan">Är maträtten/drycken vegansk?*:</label><br>
-            <select id="vegan" required>
-                <option value="" disabled selected>Välj</option>
-                <option value="Ja">Ja</option>
-                <option value="Nej">Nej</option>
-            </select><br><br>
+                <label for="vegan">Är maträtten/drycken vegansk?*:</label>
+                <select id="vegan" required>
+                    <option value="" disabled selected>Välj</option>
+                    <option value="Ja">Ja</option>
+                    <option value="Nej">Nej</option>
+                </select>
 
-            <p><i>* = Obligatoriska fält.</i></p>
+                <p><i>* = Obligatoriska fält.</i></p>
 
-            <div class="btnContainer"><button type="submit">LÄGG TILL</button></div>
-            <button type="button" id="cancelBtn">AVBRYT</button>
-        </form>
+                <div class="btnContainer"><button type="submit">LÄGG TILL</button></div>
+            </form>
+        </div>
         <div id="errorMessage"></div>
         <div id="menuContainer"></div>
-        <a href="dashboard.html">Tillbaka till dashboard</a>
     </main>
 </body>
 
