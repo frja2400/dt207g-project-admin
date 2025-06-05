@@ -126,8 +126,8 @@ function showEditForm(order, orderDiv) {
                     <option value="Skickad" ${order.status === "Skickad" ? "selected" : ""}>Levererad</option>
                 </select>
             </label><br><br>
-            <button type="submit">Spara</button>
-            <button type="button" class="cancelBtn">Avbryt</button>
+            <button type="submit">SPARA</button>
+            <button type="button" class="cancelBtn">AVBRYT</button>
         </form>
     `;
 

@@ -74,6 +74,10 @@ select {
     margin: 5px 0 10px 0;
 }
 
+.editOrderForm input {
+    width: 95%;
+}
+
 .btnContainer {
     text-align: center;
     margin: 20px 0;
@@ -187,6 +191,7 @@ button:hover {
 
 .menuItem button {
     margin-right: 10px;
+    margin-top: 15px;
 }
 
 #cancelBtn {
