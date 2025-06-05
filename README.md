@@ -12,6 +12,7 @@ Det här projektet är admin-delen för min fiktiva restaurang Pizzeria Berna. D
 - Registrering av administratör (kräver email).
 - Inloggning för administratör (med JWT-autentisering).
 - Se, radera och redigera alla beställningar som lagts av kunder.
+- Användare kan avbryta pågående ändringar.
 - Skapa, redigera och ta bort objekt i menyn.
 - Tydliga felmeddelanden och bekräftelser vid åtgärder.
 - Responsiv och stilren design för användarvänlighet.

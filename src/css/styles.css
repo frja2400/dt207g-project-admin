@@ -12,10 +12,9 @@ body {
 
 main {
     max-width: 800px;
-    width: 100%;
+    width: 95%;
     margin: 0 auto;
     display: flex;
-    gap: 20px;
     flex-wrap: wrap;
 }
 
@@ -136,6 +135,8 @@ button:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     flex: 1;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .navMenu li:hover {
@@ -175,10 +176,6 @@ button:hover {
     margin-top: 25px;
 }
 
-#menuContainer .menuSection:first-child .menuTitle {
-    margin-top: 0px;
-}
-
 .menuItem {
     width: calc(50% - 10px);
     background-color: #f9f9f9;
@@ -201,4 +198,46 @@ button:hover {
 #errorMessage,
 #menuContainer {
     flex-basis: 100%;
+}
+
+@media screen and (max-width : 500px) {
+
+    #loginForm,
+    #registerForm {
+        width: 100%;
+    }
+
+    #menuItemForm {
+        width: 90%;
+    }
+
+    .menuItem {
+        width: 100%;
+        max-width: none;
+    }
+
+    .navMenu ul {
+        gap: 5px;
+    }
+
+    .navMenu li a {
+        letter-spacing: 0;
+    }
+
+    .navMenu li {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .loginContainer,
+    .dashboardContainer {
+        margin-top: 30px;
+        padding: 20px;
+    }
+
+    .menuTitle {
+        margin-top: 15px;
+    }
+
+
 }
