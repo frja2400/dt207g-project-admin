@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+/*Grunddesign för layout*/
 body {
     font-family: 'Roboto', Helvetica, sans-serif;
     display: flex;
@@ -36,6 +37,7 @@ main {
     padding: 40px;
 }
 
+/*Design för rubriker och text*/
 h1 {
     background: linear-gradient(to right, #b22222, #8b0000);
     color: #fff;
@@ -59,6 +61,7 @@ p {
     line-height: 1.6em;
 }
 
+/*Design för formulär*/
 #loginForm,
 #registerForm,
 #menuItemForm {
@@ -77,6 +80,7 @@ select {
     width: 95%;
 }
 
+/*Design för knappar*/
 .btnContainer {
     text-align: center;
     margin: 20px 0;
@@ -101,6 +105,7 @@ button:hover {
     margin-top: 40px;
 }
 
+/*Design för felmeddelanden och bekräftelser*/
 #loginMessage,
 #registerMessage,
 #errorMessage,
@@ -114,6 +119,7 @@ button:hover {
     line-height: 1;
 }
 
+/*Design för navigering*/
 .navMenu {
     width: 100%;
 }
@@ -153,6 +159,7 @@ button:hover {
     letter-spacing: 1px;
 }
 
+/*Layout för meny och beställningar*/
 #menuContainer,
 #orderContainer {
     margin-bottom: 20px;
@@ -171,7 +178,6 @@ button:hover {
     text-align: left;
     border-bottom: 2px solid #b22222;
     padding-bottom: 5px;
-    font-size: 1.8em;
     margin-bottom: 0;
     margin-top: 25px;
 }
@@ -200,6 +206,7 @@ button:hover {
     flex-basis: 100%;
 }
 
+/*Design för mindre skärmar*/
 @media screen and (max-width : 500px) {
 
     #loginForm,
