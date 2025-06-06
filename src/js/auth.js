@@ -147,7 +147,7 @@ async function registerUser(e) {
         const data = await response.json();
 
         if (response.ok) {
-            registerMessageDiv.innerHTML = "<p class='success'>Administratörskonto registrerad! <a href='index.html'>Logga in här</a></p>";
+            registerMessageDiv.innerHTML = "<p class='success'>Administratörskontot är registrerat! <a href='index.html'>Logga in här</a></p>";
             clearForm(registerForm);
         } else {
             //Om något går fel med registrering, visa ett generellt felmeddelande
