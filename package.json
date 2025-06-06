@@ -8,7 +8,7 @@
   "source": "index.html",
   "scripts": {
     "start": "parcel index.html dashboard.html menu.html orders.html register.html --no-hmr --open",
-    "build": "parcel build"
+    "build": "parcel build index.html dashboard.html menu.html orders.html register.html --dist-dir dist --public-url ./"
   },
   "devDependencies": {
     "parcel": "^2.13.3"

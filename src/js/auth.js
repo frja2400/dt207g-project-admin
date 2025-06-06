@@ -83,7 +83,7 @@ async function loginUser(e) {
             //Spara min token i localStorage(min server skickar tillbaka svaret i "response" i JSON)
             localStorage.setItem("user_token", data.token);
             clearForm(loginForm);
-            window.location.href = "dashboard.html";
+            window.location.href = "/dashboard.html";
         } else {
             //Om något går fel med inloggningen, visa ett generellt felmeddelande och rensa annan text.
             loginMessageDiv.innerHTML = "";
