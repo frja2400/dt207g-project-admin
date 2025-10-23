@@ -32,3 +32,11 @@ Det här projektet är admin-delen för min fiktiva restaurang Pizzeria Berna. D
 - `POST /api/users/register` – Registrera en ny administratör (kräver email och lösenord).
 
 En liveversion av API:t finns tillgänglig på följande URL: https://dt207g-project-restapi.onrender.com/
+
+## Live Demo
+
+[Prova applikationen här](https://pizzeriaberna-admin.netlify.app/)
+
+Inlogg:
+Email: admin@pizzeriaberna.com
+Lösenord: password
