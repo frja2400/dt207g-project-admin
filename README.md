@@ -37,6 +37,6 @@ En liveversion av API:t finns tillgänglig på följande URL: https://dt207g-pro
 
 [Prova applikationen här](https://pizzeriaberna-admin.netlify.app/)
 
-Inlogg:
-Email: admin@pizzeriaberna.com
-Lösenord: password
+**Inlogg:**
+- Email: admin@pizzeriaberna.com
+- Lösenord: password
